@@ -4,7 +4,6 @@
 #
 FROM maven:3.8.3-openjdk-17 AS build
 COPY . .
-RUN  cat /etc/secrets/env
 RUN --mount=type=secret,id=env,dst=/etc/secrets/env mvn clean package -Pprod -DskipTests
 
 #
