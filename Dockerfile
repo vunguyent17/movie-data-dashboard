@@ -4,10 +4,10 @@
 #
 FROM maven:3.8.3-openjdk-17 AS build
 COPY . .
-RUN --mount=type=secret,id=env,dst=/etc/secrets/env export $(xargs < env) && echo $DATABASE_NAME && mvn clean package -Pprod -DskipTests
-RUN --mount=type=secret,id=env,dst=/etc/secrets/env echo "export `$(xargs < /etc/secrets/env)`" >> /envfile
+RUN --mount=type=secret,id=env,dst=/etc/secrets/env echo "export DATABASE_NAME=`$(xargs < /etc/secrets/env)`" >> /envfile
 RUN . /envfile; echo $DATABASE_NAME
-#
+RUN --mount=type=secret,id=env,dst=/etc/secrets/env export $(xargs < env) && echo $DATABASE_NAME && mvn clean package -Pprod -DskipTests
+
 # Package stage
 #
 
