@@ -12,7 +12,7 @@ RUN --mount=type=secret,id=env,dst=/etc/secrets/env export $(xargs < env) && ech
 
 FROM eclipse-temurin:17-jdk-focal
 COPY --from=build /target/movie-data-api-0.0.1-SNAPSHOT.jar movie-data-api-0.0.1-SNAPSHOT.jar
-RUN --mount=type=secret,id=env,dst=/etc/secrets/env export moviesecret = $(xargs < env); /bin/bash -l -c 'echo export $(moviesecret)" > /etc/profile.d/docker_init.sh' \
+RUN --mount=type=secret,id=env,dst=/etc/secrets/env export moviesecret = $(xargs < env); /bin/bash -l -c 'echo export $(moviesecret)" > /etc/profile.d/docker_init.sh'
 RUN echo $DATABASE_NAME
 EXPOSE 8080
 ENTRYPOINT ["java", "-jar", "movie-data-api-0.0.1-SNAPSHOT.jar"]
