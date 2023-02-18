@@ -13,7 +13,8 @@ RUN --mount=type=secret,id=env,dst=/etc/secrets/env export $(xargs < env) && ech
 FROM eclipse-temurin:17-jdk-focal
 COPY --from=build /target/movie-data-api-0.0.1-SNAPSHOT.jar movie-data-api-0.0.1-SNAPSHOT.jar
 RUN --mount=type=secret,id=env,dst=/etc/secrets/env echo "export `$(xargs < env)`" >> /env
-RUN cat /env
+RUN echo "export VAR=13243" >> /envfile
+RUN . /envfile; echo $VAR
 EXPOSE 8080
 ENTRYPOINT ["java", "-jar", "movie-data-api-0.0.1-SNAPSHOT.jar"]
 
