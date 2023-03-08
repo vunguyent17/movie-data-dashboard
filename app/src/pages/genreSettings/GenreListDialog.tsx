@@ -38,7 +38,7 @@ interface Genre {
 interface GenreListDialogProps {
   urlGenreQuery: string;
 }
-export default function GenreListDialog({ urlGenreQuery}: GenreListDialogProps) {
+export default function GenreListDialog({ urlGenreQuery }: GenreListDialogProps) {
   const [loadingData, setLoadingData] = useState(true);
   const [genreList, setGenreList] = useState<Genre[]>([]);
   const [deleteGenreId, setDeleteGenreId] = useState(-1);
@@ -77,14 +77,13 @@ export default function GenreListDialog({ urlGenreQuery}: GenreListDialogProps) 
       setLoadingData(true);
       setReloadData((data) => data + 1);
     }
-    else
-    {
+    else {
       setMessageSnackbar("Can't delete genre. There are movies that belong to this genre");
       setStatusSnackbar(404);
     }
     setOpenSnackBar(true);
     setDeleteGenreId(-1);
-    
+
   }
 
 
@@ -141,20 +140,19 @@ export default function GenreListDialog({ urlGenreQuery}: GenreListDialogProps) 
   }, [reloadData, urlGenreQuery]);
 
 
-  return (loadingData) ?
-    <Box sx={{ display: 'flex', m: 2 }}
-      justifyContent="center"
-      alignItems="center">
-      <CircularProgress /> <Typography sx={{ mx: 2 }}>Loading ...</Typography>
-    </Box> :
-    <>
-      <List sx={{
-        bgcolor: 'background.paper',
-        overflow: 'auto',
-        height: 300,
-        border: 1
-      }}>
-        {genreList.map((genre) =>
+  return <>
+    <List sx={{
+      bgcolor: 'background.paper',
+      overflow: 'auto',
+      height: 300,
+      border: 1
+    }}>
+      {(loadingData) ?
+        <Box sx={{ display: 'flex', m: 2 }}
+          justifyContent="center"
+          alignItems="center">
+          <CircularProgress /> <Typography sx={{ mx: 2 }}>Loading ...</Typography>
+        </Box> : genreList.map((genre) =>
           <ListItem key={"genre-" + genre.id.toString()}>
             <ListItemIcon>
               <MovieIcon />
@@ -182,32 +180,32 @@ export default function GenreListDialog({ urlGenreQuery}: GenreListDialogProps) 
             </ListItemIcon>
           </ListItem>,
         )}
-      </List>
-      <Dialog
-        open={openAlertDelete}
-        onClose={handleCloseAlertDelete}
-        aria-labelledby="alert-dialog-title"
-        aria-describedby="alert-dialog-description"
-      >
-        <DialogTitle id="alert-dialog-title">
-          {"Delete genre?"}
-        </DialogTitle>
-        <DialogContent>
-          <DialogContentText id="alert-dialog-description">
-            Are you sure you want to delete this genre?
-          </DialogContentText>
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={handleDeleteGenre}>Delete this genre</Button>
-          <Button onClick={handleCloseAlertDelete} autoFocus>
-            Cancel
-          </Button>
-        </DialogActions>
-      </Dialog>
+    </List>
+    <Dialog
+      open={openAlertDelete}
+      onClose={handleCloseAlertDelete}
+      aria-labelledby="alert-dialog-title"
+      aria-describedby="alert-dialog-description"
+    >
+      <DialogTitle id="alert-dialog-title">
+        {"Delete genre?"}
+      </DialogTitle>
+      <DialogContent>
+        <DialogContentText id="alert-dialog-description">
+          Are you sure you want to delete this genre?
+        </DialogContentText>
+      </DialogContent>
+      <DialogActions>
+        <Button onClick={handleDeleteGenre}>Delete this genre</Button>
+        <Button onClick={handleCloseAlertDelete} autoFocus>
+          Cancel
+        </Button>
+      </DialogActions>
+    </Dialog>
 
-      <SnackBarMovie messageSnackbar={messageSnackbar}
-        statusSnackbar={statusSnackbar}
-        openSnackBar={openSnackBar}
-        setOpenSnackBar={setOpenSnackBar} />
-    </>
+    <SnackBarMovie messageSnackbar={messageSnackbar}
+      statusSnackbar={statusSnackbar}
+      openSnackBar={openSnackBar}
+      setOpenSnackBar={setOpenSnackBar} />
+  </>
 }
