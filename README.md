@@ -1,6 +1,6 @@
 # Movie Data Dashboard Website
 
-<img src="" data-canonical-src="" style="display:block; margin-left: auto; margin-right: auto; width: 80%" alt="Trang chủ" />
+<img src="https://github.com/vunguyent17/movie-data-dashboard/blob/main/Screenshots/MovieDataDashboard_1.png" data-canonical-src="https://github.com/vunguyent17/movie-data-dashboard/blob/main/Screenshots/MovieDataDashboard_1.png" style="display:block; margin-left: auto; margin-right: auto; width: 80%" alt="Trang chủ" />
 
 ## Giới thiệu / Introduction
 
