@@ -6,8 +6,9 @@
 
 Movie Data Dashboard Website là ứng dụng website cho phép quản lý dữ liệu phim trên cơ sở dữ liệu.
 <br/>
-Movie Data Dashboard Website is a web application that allows users to browse and manage Movie database.
-The website uses front end in reactjs and back end of application in Spring Boot. I build a static version of the app to put it in the static folder of Spring Boot application
+
+Movie Data Dashboard Website is a web application that allows users to browse and manage movie information database.
+The website is a Spring Boot application as back end with simple UI using React.js
 
 ### Chức năng của ứng dụng / Functionality:
 - Hiển thị danh sách phim, thể loại phim. Hiển thị phim theo thể loại
@@ -35,7 +36,7 @@ The website uses front end in reactjs and back end of application in Spring Boot
 
 ## Set up project locally
 ### Prerequisites
-- NodeJS
+- Node.js
 - Java 17
 - PostgreSQL, pgAdmin 4
 - (Optional) IntelliJ
