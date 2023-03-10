@@ -214,6 +214,7 @@ export default function MovieList({ urlMoviesList }: MovieListProps) {
       }
     }
     const getMoviesData = async () => {
+      setLoadingData(true);
       let responseMovies = await axios.get(urlMoviesWithPagination);
       if (isFetching) {
         setPageData(responseMovies.data.page);
